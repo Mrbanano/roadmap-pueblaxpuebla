@@ -1,5 +1,7 @@
 /* Datos compartidos: home (/) y detalle (/detalle/). Las casillas se guardan en localStorage con la misma llave. */
-const EVENT=new Date('2026-11-18T08:00:00-06:00');
+/* Fecha estimada FIJA del foro. Para cambiarla, editar solo esta línea. */
+const EVENT_DATE='2026-11-18';
+const EVENT=new Date(EVENT_DATE+'T08:00:00-06:00');
 const KEY='ppp-roadmap';
 const LINKS=[
  ['Flyer OFICIAL (PDF)','https://drive.google.com/file/d/1Jzk7uDCnUsn6OHInKQK4Dz1gtNMWLFRy/view',1],
@@ -16,8 +18,8 @@ const D=[
    {t:'Metodología, parte 1 (distribución por sector)',done:1,note:'Falta unificar y revisar'}]}]},
  {id:'op',title:'Etapa operativa',num:'1',mini:'Plataforma, metodología, hotel y ponentes',groups:[
   {h:'Hotel y fecha',items:[
-   {t:'Confirmar fecha del foro con el Hotel Quinta Real',tag:'blk',date:'Esta semana · 23–27 oct'},
-   {t:'Corregir la fecha en todos los documentos (metodología dice 11 nov.)',tag:'new',date:'Al confirmar',note:'Flyer, cartas, plataforma y metodología deben decir lo mismo'},
+   {t:'Confirmar con el Hotel Quinta Real la reserva del 18 nov (fecha estimada)',date:'Esta semana · 23–27 oct'},
+   {t:'Unificar la fecha 18 nov en todos los documentos (la metodología dice 11 nov.)',tag:'new',date:'Propuesta · 29 oct',note:'Flyer, cartas, plataforma y metodología deben decir lo mismo'},
    {t:'Pedir cotización/confirmación por escrito: salón, desayuno, audio, proyector, estacionamiento',tag:'new',date:'Propuesta · 30 oct'},
    {t:'Definir montaje: presidium, registro, mesas por sector, señalética',tag:'new',date:'Propuesta · 6 nov'}]},
   {h:'Metodología y plataforma',items:[
@@ -47,7 +49,10 @@ const D=[
    {t:'Deadline para evaluar nueva estrategia de convocatoria',tag:'dl',date:'Propuesta · lunes 2 nov'},
    {t:'Difusión con el flyer oficial: redes, WhatsApp de cámaras y clústeres, prensa',tag:'new',date:'Desde 26 oct'},
    {t:'Lista de espera por sector',tag:'new',date:'Propuesta · 6 nov'},
-   {t:'Cierre de registros',tag:'new',date:'Propuesta · 12 nov'}]}]},
+   {t:'Cierre de registros',tag:'new',date:'Propuesta · 12 nov'}]},
+  {h:'Invitados clave',items:[
+   {t:'Invitar a Startupero',tag:'new',date:'Propuesta · 27 oct'},
+   {t:'Invitar a Gaco como empresario textil',tag:'new',date:'Propuesta · 27 oct'}]}]},
  {id:'ev',title:'Etapa del evento',num:'3',mini:'Semana previa, día del foro y cierre',groups:[
   {h:'Semana previa',items:[
    {t:'Headcount final al hotel (desayuno y montaje)',tag:'new',date:'Propuesta · 13 nov'},
@@ -77,4 +82,17 @@ function hydrate(){
  }));});
  return {tot,dn};
 }
-function daysLeft(){return Math.max(0,Math.ceil((EVENT-new Date())/86400000));}
+/* Días naturales que faltan para el foro, según la fecha de hoy en Ciudad de México. Negativo si ya pasó. */
+function daysUntilEvent(){
+ const hoy=new Date().toLocaleDateString('en-CA',{timeZone:'America/Mexico_City'});
+ const a=Date.UTC(...hoy.split('-').map((n,i)=>i==1?n-1:+n));
+ const b=Date.UTC(...EVENT_DATE.split('-').map((n,i)=>i==1?n-1:+n));
+ return Math.round((b-a)/86400000);
+}
+/* Pinta el contador: número y leyenda ("días", "día", "¡Es hoy!", "ya pasó"). */
+function paintCountdown(numEl,labelEl){
+ const n=daysUntilEvent();
+ numEl.textContent=n>0?n:(n===0?'¡Hoy!':'0');
+ if(labelEl)labelEl.textContent=n>1?'días para el foro':n===1?'día para el foro':n===0?'es el foro':'el foro ya pasó';
+}
+function daysLeft(){return Math.max(0,daysUntilEvent());}

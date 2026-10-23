@@ -79,9 +79,9 @@ button.reset{background:none;border:1px solid var(--line);border-radius:8px;padd
       <h1>Foro Puebla <i>x</i> Puebla</h1>
       <div class="sub">Mié 18 nov 2026 · 08:00–11:45 · Hotel Quinta Real</div>
     </div>
-    <div class="count"><b id="days">–</b><span>días</span></div>
+    <div class="count"><b id="days">–</b><span id="dlabel">días</span></div>
   </div>
-  <div class="warn">⚠ Fecha por confirmar con el hotel (la metodología aún dice 11 nov.)</div>
+  <div class="warn">Fecha estimada. Pendiente unificarla en todos los documentos (la metodología dice 11 nov.).</div>
 
   <div class="prog"><div class="bar"><div id="bar"></div></div><div class="pct" id="pct"></div></div>
   <nav class="links" id="links"></nav>
@@ -91,7 +91,7 @@ button.reset{background:none;border:1px solid var(--line);border-radius:8px;padd
   <details class="blk">
     <summary>Bloqueadores y decisiones</summary>
     <ul>
-      <li><b>Fecha del hotel:</b> todo lo demás depende de esto.</li>
+      <li><b>Fecha estimada: 18 nov.</b> Confirmar la reserva con el hotel y unificarla en flyer, cartas, plataforma y metodología.</li>
       <li><b>Deadline de estrategia de convocatoria:</b> propuesto lunes 2 de noviembre.</li>
       <li><b>Viáticos de ponentes:</b> qué se cubre y quién aprueba, antes de enviar cartas.</li>
       <li><b>Asistencia:</b> piso de 80% por sector, mínimo global 99 de 120.</li>
@@ -110,9 +110,9 @@ button.reset{background:none;border:1px solid var(--line);border-radius:8px;padd
 /* Pasos en orden cronológico. Cada tarea se busca por el inicio de su texto. */
 const STEPS=[
  {n:'✓',when:'Listo',title:'Materiales terminados',items:['Flyer oficial','Cartas de colaboración: CLAUZ','Cartas de invitación a ponentes','Metodología, parte 1']},
- {n:1,when:'Hoy · 23–27 oct',title:'Destrabar y enviar',items:['Confirmar fecha del foro','Enviar cartas de colaboración','Enviar cartas de ponentes','Difusión con el flyer oficial']},
- {n:2,when:'28–30 oct',title:'Logística y plataforma',items:['Resolver viáticos','Hacer y enviar cartas a los demás','Unificar y revisar la metodología','Desplegar la plataforma','Pedir cotización','Revisar asistencia']},
- {n:3,when:'2–4 nov',title:'Confirmaciones y estrategia',items:['Deadline para evaluar','Sobreconvocar','Confirmación de cada ponente','Integrar la metodología','Seguimiento y confirmación','Prueba de punta a punta','Plan B si algún ponente','Corregir la fecha en todos']},
+ {n:1,when:'Hoy · 23–27 oct',title:'Destrabar y enviar',items:['Confirmar con el Hotel','Enviar cartas de colaboración','Enviar cartas de ponentes','Invitar a Startupero','Invitar a Gaco','Difusión con el flyer oficial']},
+ {n:2,when:'28–30 oct',title:'Logística y plataforma',items:['Resolver viáticos','Hacer y enviar cartas a los demás','Unificar la fecha','Unificar y revisar la metodología','Desplegar la plataforma','Pedir cotización','Revisar asistencia']},
+ {n:3,when:'2–4 nov',title:'Confirmaciones y estrategia',items:['Deadline para evaluar','Sobreconvocar','Confirmación de cada ponente','Integrar la metodología','Seguimiento y confirmación','Prueba de punta a punta','Plan B si algún ponente']},
  {n:4,when:'6–12 nov',title:'Programa y cierre de registros',items:['Programa final','Definir montaje','Coordinar con SEDETRA','Registrar lo que cada organismo','Lista de espera','Instrumento del levantamiento','Presidium','Cierre de registros']},
  {n:5,when:'13–17 nov',title:'Semana previa',items:['Headcount final','Mensaje de confirmación','Gafetes','Logística de ponentes','Ensayo técnico']},
  {n:6,when:'18 nov',title:'Día del foro',ev:1,items:['Llegada del equipo','Registro y recepción','Programa y levantamiento','Foto, video']},
@@ -143,7 +143,7 @@ function render(){
  const p=Math.round(dn/tot*100);
  document.getElementById('bar').style.width=p+'%';
  document.getElementById('pct').textContent=`${p}% · ${dn}/${tot}`;
- document.getElementById('days').textContent=daysLeft();
+ paintCountdown(document.getElementById('days'),document.getElementById('dlabel'));
  const nx=steps[nowIdx];const first=nx&&nx.list.find(i=>!i.d);
  document.getElementById('next').innerHTML=first?`<small>Siguiente paso</small><b>${first.t}</b><span>${first.date||nx.when}</span>`:`<small>Todo listo</small><b>Foro completado 🎉</b>`;
  tl.querySelectorAll('input').forEach(c=>c.addEventListener('change',e=>{

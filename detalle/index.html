@@ -69,9 +69,9 @@ button.reset{background:none;border:1px solid var(--line);border-radius:8px;padd
   <div>
     <a href="../" style="font-size:13px;font-weight:600;color:var(--rosa);text-decoration:none">← Ruta paso a paso</a><div class="eyebrow" style="margin-top:8px">Clúster de Startups e Innovación · Observatorio Tecnológico de Puebla</div>
     <h1>Foro Puebla <i>x</i> Puebla · Roadmap</h1>
-    <div class="sub">Miércoles 18 de noviembre de 2026 · 08:00–11:45 · Hotel Quinta Real, Puebla · 120 empresarios · 13 sectores<br><b style="color:var(--rosa)">Fecha por confirmar con el hotel</b> (la metodología aún dice 11 de nov.)</div>
+    <div class="sub">Miércoles 18 de noviembre de 2026 · 08:00–11:45 · Hotel Quinta Real, Puebla · 120 empresarios · 13 sectores<br><b style="color:var(--rosa)">Fecha estimada</b> (la metodología aún dice 11 de nov.)</div>
   </div>
-  <div class="count"><b id="days">–</b><span>días para el evento</span></div>
+  <div class="count"><b id="days">–</b><span id="dlabel">días para el evento</span></div>
 </header>
 
 <div class="prog"><div class="bar"><div id="bar"></div></div><div class="pct" id="pct">0%</div></div>
@@ -86,7 +86,7 @@ button.reset{background:none;border:1px solid var(--line);border-radius:8px;padd
 <div class="block">
   <h3>Bloqueadores y decisiones pendientes</h3>
   <ul>
-    <li><b>Confirmar fecha con el hotel.</b> Todo lo demás (cartas, ponentes, viáticos, convocatoria) depende de esto.</li>
+    <li><b>Fecha estimada: 18 de noviembre.</b> Confirmar la reserva con el hotel y unificarla en flyer, cartas, plataforma y metodología.</li>
     <li><b>Deadline para evaluar nueva estrategia de convocatoria:</b> propuesto <b>lunes 2 de noviembre</b>, con la asistencia por sector ya revisada.</li>
     <li><b>Viáticos de ponentes:</b> definir qué se cubre (traslado, hospedaje, alimentos) y quién lo aprueba antes de enviar las cartas.</li>
     <li><b>Umbral de asistencia:</b> piso de 80% por sector (mínimo global 99 de 120) según la metodología.</li>
@@ -130,7 +130,7 @@ function render(){
  const p=Math.round(dn/tot*100);
  document.getElementById('bar').style.width=p+'%';
  document.getElementById('pct').textContent=`${p}% · ${dn}/${tot}`;
- document.getElementById('days').textContent=daysLeft();
+ paintCountdown(document.getElementById('days'),document.getElementById('dlabel'));
  app.querySelectorAll('input[type=checkbox]').forEach(c=>c.addEventListener('change',e=>{st[e.target.dataset.k]=e.target.checked;save();render();}));
 }
 render();
