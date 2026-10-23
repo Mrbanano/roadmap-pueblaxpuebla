@@ -13,7 +13,7 @@ const D=[
  {id:'done',title:'Ya listo',num:'✓',mini:'Completado',done:true,groups:[
   {h:'Materiales',items:[
    {t:'Flyer oficial (versión Color, tabloide)',done:1},
-   {t:'Cartas de colaboración: CLAUZ, Plásticos, Reuniones, Agroalimentario y Chignahuapan-Zacatlán',done:1},
+   {t:'Cartas de colaboración: los 12 organismos (CLAUZ, Plásticos, Reuniones, Agroalimentario, Chignahuapan-Zacatlán, CCE, CANACINTRA, COPARMEX, CANIRAC, CMIC, CITEX y CNET)',done:1},
    {t:'Cartas de invitación a ponentes (7 cartas)',done:1},
    {t:'Metodología, parte 1 (distribución por sector)',done:1,note:'Falta unificar y revisar'}]}]},
  {id:'op',title:'Etapa operativa',num:'1',mini:'Plataforma, metodología, hotel y ponentes',groups:[
@@ -35,8 +35,8 @@ const D=[
    {t:'Coordinar con SEDETRA: protocolo, mensajes y logística institucional',tag:'new',date:'Propuesta · 6 nov'}]}]},
  {id:'conv',title:'Etapa de convocatoria',num:'2',mini:'Cartas, confirmaciones y asistencia',groups:[
   {h:'Colaboradores (organismos)',items:[
-   {t:'Enviar cartas de colaboración (5 listas)',date:'Propuesta · 26 oct',tag:'blk'},
-   {t:'Hacer y enviar cartas a los demás organismos: CCE, CANACINTRA, COPARMEX, CANIRAC, CMIC, CITEX, CNET',tag:'new',date:'Propuesta · 28 oct'},
+   {t:'Enviar cartas de colaboración (12 listas)',date:'Propuesta · 26 oct',tag:'blk'},
+   {t:'Hacer las cartas a los demás organismos: CCE, CANACINTRA, COPARMEX, CANIRAC, CMIC, CITEX, CNET',done:1},
    {t:'Seguimiento y confirmación de cada organismo',date:'Hasta 4 nov'},
    {t:'Registrar lo que cada organismo aporta: contactos, difusión, empresas convocadas',tag:'new',date:'Hasta 6 nov'}]},
   {h:'Ponentes',items:[
