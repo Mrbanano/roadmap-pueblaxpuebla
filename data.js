@@ -51,8 +51,7 @@ const D=[
    {t:'Lista de espera por sector',tag:'new',date:'Propuesta · 6 nov'},
    {t:'Cierre de registros',tag:'new',date:'Propuesta · 12 nov'}]},
   {h:'Invitados clave',items:[
-   {t:'Invitar a Startupero',tag:'new',date:'Propuesta · 27 oct'},
-   {t:'Invitar a Gaco como empresario textil',tag:'new',date:'Propuesta · 27 oct'}]}]},
+   {t:'Invitar a Startupero',tag:'new',date:'Propuesta · 27 oct'}]}]},
  {id:'ev',title:'Etapa del evento',num:'3',mini:'Semana previa, día del foro y cierre',groups:[
   {h:'Semana previa',items:[
    {t:'Headcount final al hotel (desayuno y montaje)',tag:'new',date:'Propuesta · 13 nov'},
