@@ -1,5 +1,5 @@
 /* Datos compartidos: home (/) y detalle (/detalle/). Las casillas se guardan en localStorage con la misma llave. */
-/* Fecha estimada FIJA del foro. Para cambiarla, editar solo esta línea. */
+/* Fecha FIJA del foro. Para cambiarla, editar solo esta línea. */
 const EVENT_DATE='2026-11-18';
 const EVENT=new Date(EVENT_DATE+'T08:00:00-06:00');
 const KEY='ppp-roadmap';
@@ -18,8 +18,8 @@ const D=[
    {t:'Metodología, parte 1 (distribución por sector)',done:1,note:'Falta unificar y revisar'}]}]},
  {id:'op',title:'Etapa operativa',num:'1',mini:'Plataforma, metodología, hotel y ponentes',groups:[
   {h:'Hotel y fecha',items:[
-   {t:'Confirmar con el Hotel Quinta Real la reserva del 18 nov (fecha estimada)',date:'Esta semana · 23–27 oct'},
-   {t:'Unificar la fecha 18 nov en todos los documentos (la metodología dice 11 nov.)',tag:'new',date:'Propuesta · 29 oct',note:'Flyer, cartas, plataforma y metodología deben decir lo mismo'},
+   {t:'Confirmar con el Hotel Quinta Real la reserva del 18 nov',date:'Esta semana · 23–27 oct'},
+   {t:'Unificar la fecha 18 nov en todos los documentos',tag:'new',date:'Propuesta · 29 oct',note:'Flyer, cartas, plataforma y metodología deben decir 18 de noviembre'},
    {t:'Pedir cotización/confirmación por escrito: salón, desayuno, audio, proyector, estacionamiento',tag:'new',date:'Propuesta · 30 oct'},
    {t:'Definir montaje: presidium, registro, mesas por sector, señalética',tag:'new',date:'Propuesta · 6 nov'}]},
   {h:'Metodología y plataforma',items:[
